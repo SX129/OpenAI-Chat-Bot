@@ -1,4 +1,5 @@
 import { connect, disconnect } from 'mongoose';
+//Initlaizing connect/disconnect functions to mongodb
 async function connectToDatabase() {
     try {
         await connect(process.env.MONGODB_URL);
