@@ -1,20 +1,20 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-import { ThemeProvider, createTheme } from '@mui/material'
-import { BrowserRouter } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext.tsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.tsx";
+import "./index.css";
+import { ThemeProvider, createTheme } from "@mui/material";
+import { BrowserRouter } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext.tsx";
 
 //Creating app theme from mui
 const theme = createTheme({
   typography: {
-    fontFamily:"Roboto Slab, serif", 
-    allVariants:{color:"white"},
-  }
+    fontFamily: "Roboto Slab, serif",
+    allVariants: { color: "white" },
+  },
 });
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AuthProvider>
       <BrowserRouter>
@@ -23,5 +23,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </ThemeProvider>
       </BrowserRouter>
     </AuthProvider>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
