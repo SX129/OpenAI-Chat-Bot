@@ -5,5 +5,5 @@ export const generateChatCompletion = async (
   res: Response,
   next: NextFunction
 ) => {
-    
+    const { message } = req.body;
 };
