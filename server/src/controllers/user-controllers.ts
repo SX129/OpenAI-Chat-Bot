@@ -1,6 +1,8 @@
 import { NextFunction, Response, Request } from "express";
 import User from "../models/User.js";
 import { genSalt, hash, compare } from 'bcrypt';
+import { createToken } from "../utils/token-manager.js";
+import { COOKIE_NAME } from "../utils/constants.js";
 
 //GET request function for all users
 export const getAllUsers = async (req:Request, res:Response, next:NextFunction) => {
@@ -33,6 +35,22 @@ export const userSignup = async (req:Request, res:Response, next:NextFunction) =
         const user = new User({name, email, password: hashedPassword});
         await user.save();
 
+        //Clearing previous cookie
+        res.clearCookie(COOKIE_NAME, {
+            httpOnly: true,
+            domain: "localhost",
+            signed: true,
+            path: "/",
+        });
+
+        //Creating JWT and storing cookie
+        const token = createToken(user._id.toString(), user.email, "7d");
+
+        //Setting expiration date for cookie
+        const expires = new Date();
+        expires.setDate(expires.getDate() + 7);
+        res.cookie(COOKIE_NAME, token, {path: "/", domain: "localhost", expires, httpOnly: true, signed: true,});
+
         return res.status(201).json({ message: "OK", id:user._id.toString() });
     } catch (error) {
         console.log(error);
@@ -56,6 +74,22 @@ export const userLogin = async (req:Request, res:Response, next:NextFunction) =>
         if(!isPasswordCorrect){
             return res.status(403).send("Incorrect password.");
         }
+
+        //Clearing previous cookie
+        res.clearCookie(COOKIE_NAME, {
+            httpOnly: true,
+            domain: "localhost",
+            signed: true,
+            path: "/",
+        });
+
+        //Creating JWT and storing cookie
+        const token = createToken(user._id.toString(), user.email, "7d");
+
+        //Setting expiration date for cookie
+        const expires = new Date();
+        expires.setDate(expires.getDate() + 7);
+        res.cookie(COOKIE_NAME, token, {path: "/", domain: "localhost", expires, httpOnly: true, signed: true,});
 
         return res.status(200).json({ message: "OK", id:user._id.toString() });
 
