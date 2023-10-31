@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Work+Sans&display=swap');
 
-html, body{
+html, body {
   margin: 0;
   padding: 0;
   background: #05101c;
@@ -8,11 +8,11 @@ html, body{
   font-family: "Roboto Slab", serif;
 }
 
-.image-inverted{
+.image-inverted {
   filter: invert(100%);
 }
 
-.nav-link{
+.nav-link {
   font-weight: 600;
   text-transform: uppercase;
   margin-right: 10px;
@@ -21,4 +21,9 @@ html, body{
   border-radius: 10px;
   text-decoration: none;
   letter-spacing: 1px;
+}
+
+.MuiOutlinedInput-input-root.Mui-focused,
+.MuiOutlinedInput-notchedOutline{
+  border-color: white !important;
 }
