@@ -5,6 +5,11 @@ import "./index.css";
 import { ThemeProvider, createTheme } from "@mui/material";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext.tsx";
+import axios from "axios";
+
+//Allows the exchange of cookies to backend
+axios.defaults.baseURL = "http://localhost:5000/api/v1";
+axios.defaults.withCredentials = true;
 
 //Creating app theme from mui
 const theme = createTheme({
