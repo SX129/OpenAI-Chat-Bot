@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { red } from "@mui/material/colors";
 import ChatItem from "../components/chat/ChatItem";
 import { IoMdSend } from "react-icons/io";
-import { getUserChats, sendChatRequest } from "../helpers/api-communicator";
+import { deleteUserChats, getUserChats, sendChatRequest } from "../helpers/api-communicator";
 import toast from "react-hot-toast";
 
 type Message = {
@@ -30,6 +30,19 @@ const Chat = () => {
 
     const chatData = await sendChatRequest(content);
     setChatMessages([...chatData.chats]);
+  };
+
+  const handleDeleteChats = async () => {
+    try {
+      toast.loading("Deleting Chat.", {id: "deletechats"});
+      await deleteUserChats();
+      setChatMessages([]);
+
+      toast.success("Successfully Deleted Chat.", {id: "deletechats"});
+    } catch (err) {
+      console.log(err);
+      toast.error("Delete Failed", { id: "deletechats" });
+    }
   };
 
   useLayoutEffect(() => {
