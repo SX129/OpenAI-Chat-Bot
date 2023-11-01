@@ -34,18 +34,18 @@ const Chat = () => {
 
   useLayoutEffect(() => {
     if (auth?.isLoggedIn && auth.user) {
-      toast.loading("Loading Chats", { id: "loadchats" });
+      toast.loading("Loading Chat", { id: "loadchats" });
       getUserChats()
         .then((data) => {
           setChatMessages([...data.chats]);
-          toast.success("Successfully Loaded Chats", { id: "loadchats" });
+          toast.success("Successfully Loaded Chat", { id: "loadchats" });
         })
         .catch((err) => {
           console.log(err);
           toast.error("Loading Failed", { id: "loadchats" });
         });
     }
-  }, []);
+  }, [auth]);
 
   return (
     <Box
