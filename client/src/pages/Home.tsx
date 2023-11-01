@@ -17,6 +17,27 @@ const Home = () => {
         <Box>
           <TypingAnim />
         </Box>
+        <Box
+          sx={{
+            width: "100%",
+            gap: 5,
+            my: 10,
+            display: "flex",
+            flexDirection: { md: "row", xs: "column" },
+          }}
+        >
+          <img
+            src="robot.png"
+            alt="robot"
+            style={{ width: "200px", margin: "auto" }}
+          />
+          <img
+            className="image-inverted rotate"
+            src="openai.png"
+            alt="openai"
+            style={{ width: "200px", margin: "auto" }}
+          />
+        </Box>
       </Box>
     </Box>
   );
