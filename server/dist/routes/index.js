@@ -6,6 +6,6 @@ const appRouter = Router();
 //Creating router for "user" endpoint
 appRouter.use("/user", userRoutes);
 //Creating router for "user" endpoint
-appRouter.use("/chats", chatRoutes);
+appRouter.use("/chat", chatRoutes);
 export default appRouter;
 //# sourceMappingURL=index.js.map
