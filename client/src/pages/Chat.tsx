@@ -1,53 +1,19 @@
 import { Avatar, Box, Button, IconButton, Typography } from "@mui/material";
-import React from "react";
+import React, { useRef, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { red } from "@mui/material/colors";
 import ChatItem from "../components/chat/ChatItem";
-import {IoMdSend} from 'react-icons/io';
-
-const chat_messages = [
-  { role: "user", content: "Hello, how are you?" },
-  {
-    role: "assistant",
-    content:
-      "I'm just a computer program, so I don't have feelings, but I'm here to help you! How can I assist you today?",
-  },
-  { role: "user", content: "I need help with a programming problem." },
-  {
-    role: "assistant",
-    content:
-      "Sure! I'd be happy to help. What programming language are you using, and what seems to be the problem?",
-  },
-  {
-    role: "user",
-    content:
-      "I'm working with Python, and I'm getting an error when trying to open a file.",
-  },
-  {
-    role: "assistant",
-    content:
-      "Can you please show me the code where you're trying to open the file, as well as the exact error message you're receiving?",
-  },
-  {
-    role: "user",
-    content:
-      'Here is the code:\n\nwith open("example.txt", "r") as file:\n    content = file.read()\n\nAnd the error message says "FileNotFoundError: [Errno 2] No such file or directory: \'example.txt\'".',
-  },
-  {
-    role: "assistant",
-    content:
-      "It looks like the file 'example.txt' is not in the same directory as your Python script. Make sure the file is located in the same folder, or provide the correct path to the file.",
-  },
-  { role: "user", content: "Ah, I see. Thank you for your help!" },
-  {
-    role: "assistant",
-    content:
-      "You're welcome! If you have any more questions, feel free to ask. Happy coding!",
-  },
-];
+import { IoMdSend } from "react-icons/io";
 
 const Chat = () => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const auth = useAuth();
+
+  const [chatMessages, setChatMessages] = useState([]);
+
+  const handleSubmit = async () => {
+    console.log(inputRef.current?.value);
+  };
 
   return (
     <Box
@@ -89,7 +55,14 @@ const Chat = () => {
           >
             {auth?.user?.name[0]}
           </Avatar>
-          <Typography sx={{ mx: "auto", fontFamily: "work sans", p: 3 }}>
+          <Typography
+            sx={{
+              mx: "auto",
+              fontFamily: "work sans",
+              p: 3,
+              textAlign: "center",
+            }}
+          >
             You are talking to OpenAI's GPT
           </Typography>
           <Typography sx={{ mx: "auto", fontFamily: "work sans", my: 4, p: 3 }}>
@@ -146,7 +119,8 @@ const Chat = () => {
             scrollBehavior: "smooth",
           }}
         >
-          {chat_messages.map((chat, index) => (
+          {chatMessages.map((chat, index) => (
+            //@ts-ignore
             <ChatItem content={chat.content} role={chat.role} key={index} />
           ))}
         </Box>
@@ -162,6 +136,7 @@ const Chat = () => {
         >
           {" "}
           <input
+            ref={inputRef}
             type="text"
             style={{
               width: "100%",
@@ -173,7 +148,7 @@ const Chat = () => {
               fontSize: "20px",
             }}
           />
-          <IconButton sx={{ml: "auto", color:"white"}}>
+          <IconButton onClick={handleSubmit} sx={{ ml: "auto", color: "white" }}>
             <IoMdSend />
           </IconButton>
         </div>
