@@ -5,14 +5,24 @@ import { red } from "@mui/material/colors";
 import ChatItem from "../components/chat/ChatItem";
 import { IoMdSend } from "react-icons/io";
 
+type Message = {
+  role: "user" | "assistant";
+  content: string;
+};
+
 const Chat = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const auth = useAuth();
 
-  const [chatMessages, setChatMessages] = useState([]);
+  const [chatMessages, setChatMessages] = useState<Message[]>([]);
 
   const handleSubmit = async () => {
-    console.log(inputRef.current?.value);
+    const content = inputRef.current?.value as string;
+    if(inputRef && inputRef.current){
+      inputRef.current.value = "";
+    }
+    const newMessage: Message = {role:"user", content};
+    setChatMessages((prev) => [...prev, newMessage])
   };
 
   return (
