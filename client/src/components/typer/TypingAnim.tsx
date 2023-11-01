@@ -1,11 +1,10 @@
-import React from "react";
 import { TypeAnimation } from "react-type-animation";
 
+//Typing animation component for home
 const TypingAnim = () => {
   return (
     <TypeAnimation
       sequence={[
-        // Same substring at the start will only be typed once, initially
         "A Chat-GPT Clone",
         1000,
         "Built with OpenAI : GPT-3.5 Turbo",

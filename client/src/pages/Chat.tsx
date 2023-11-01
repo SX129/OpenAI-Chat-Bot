@@ -1,5 +1,5 @@
 import { Avatar, Box, Button, IconButton, Typography } from "@mui/material";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { red } from "@mui/material/colors";
 import ChatItem from "../components/chat/ChatItem";
@@ -8,19 +8,25 @@ import { deleteUserChats, getUserChats, sendChatRequest } from "../helpers/api-c
 import toast from "react-hot-toast";
 import { useNavigate } from 'react-router-dom';
 
+//Message schema
 type Message = {
   role: "user" | "assistant";
   content: string;
 };
 
+//Chat component for endpoint
 const Chat = () => {
+
+  //Hook to direct user to new endpoint
   const navigate = useNavigate();
 
+  //Hook to reference value not needed for rendering
   const inputRef = useRef<HTMLInputElement | null>(null);
   const auth = useAuth();
 
   const [chatMessages, setChatMessages] = useState<Message[]>([]);
 
+  //Submit handler for new chat messages
   const handleSubmit = async () => {
     const content = inputRef.current?.value as string;
 
@@ -35,6 +41,7 @@ const Chat = () => {
     setChatMessages([...chatData.chats]);
   };
 
+  //Delete handler for deleting chat messages
   const handleDeleteChats = async () => {
     try {
       toast.loading("Deleting Chat.", {id: "deletechats"});
@@ -48,6 +55,7 @@ const Chat = () => {
     }
   };
 
+  //Hook to check user authentication and load chat
   useLayoutEffect(() => {
     if (auth?.isLoggedIn && auth.user) {
       toast.loading("Loading Chat", { id: "loadchats" });
@@ -62,7 +70,8 @@ const Chat = () => {
         });
     }
   }, [auth]);
-
+  
+  //Hook to send user back to login if auth fail
   useEffect(() => {
     if(!auth?.user){
       return navigate("/login");

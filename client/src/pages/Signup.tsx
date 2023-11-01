@@ -6,9 +6,14 @@ import { toast } from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
+//Signup component for endpoint
 const Signup = () => {
+
+  //Hook to direct user to new endpoint
   const navigate = useNavigate();
   const auth = useAuth();
+
+  //Submit handler for user signup
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -29,6 +34,7 @@ const Signup = () => {
     }
   };
 
+  //Hook to send user to chat endpoint if auth pass
   useEffect(()=> {
     if(auth?.user){
       return navigate("/chat");

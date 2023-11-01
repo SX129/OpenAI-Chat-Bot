@@ -1,12 +1,13 @@
-import React from "react";
 import { TextField } from "@mui/material";
 
+//Props schema
 type Props = {
   name: string;
   type: string;
   label: string;
 };
 
+//Input component for Login and Signup
 const CustomizedInput = (props: Props) => {
   return (
     <TextField

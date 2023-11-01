@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//Fetch login data for auth
 export const loginUser = async (email: string, password: string) => {
   const res = await axios.post("/user/login", { email, password });
 
@@ -11,6 +12,7 @@ export const loginUser = async (email: string, password: string) => {
   return data;
 };
 
+//Send signup data
 export const signupUser = async (name: string, email: string, password: string) => {
   const res = await axios.post("/user/signup", { name, email, password });
 
@@ -22,6 +24,7 @@ export const signupUser = async (name: string, email: string, password: string) 
   return data;
 };
 
+//Authenticate user data
 export const checkAuthStatus = async () => {
   const res = await axios.get("/user/auth-status");
 
@@ -33,6 +36,7 @@ export const checkAuthStatus = async () => {
   return data;
 };
 
+//Send new chat data
 export const sendChatRequest = async (message: string) => {
   const res = await axios.post("/chat/new", { message });
 
@@ -44,6 +48,7 @@ export const sendChatRequest = async (message: string) => {
   return data;
 };
 
+//Fetch chat data
 export const getUserChats = async () => {
   const res = await axios.get("/chat/all-chats");
 
@@ -55,6 +60,7 @@ export const getUserChats = async () => {
   return data;
 };
 
+//Delete chat data
 export const deleteUserChats = async () => {
   const res = await axios.delete("/chat/delete");
 
@@ -66,11 +72,12 @@ export const deleteUserChats = async () => {
   return data;
 };
 
+//Fetch user data for logout
 export const logoutUser = async () => {
   const res = await axios.get("/user/logout");
 
   if (res.status !== 200) {
-    throw new Error("Unable to delete chat.");
+    throw new Error("Unable to logout.");
   }
 
   const data = await res.data;

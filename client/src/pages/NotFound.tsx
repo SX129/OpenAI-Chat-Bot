@@ -1,5 +1,5 @@
-import React from "react";
 
+//Not found component for endpoint
 const NotFound = () => {
   return <div>NotFound</div>;
 };

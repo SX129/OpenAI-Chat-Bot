@@ -1,10 +1,10 @@
-import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Logo from "./shared/Logo";
 import { useAuth } from "../context/AuthContext";
 import NavigationLink from "./shared/NavigationLink";
 
+//Header component
 function Header() {
   const auth = useAuth();
 

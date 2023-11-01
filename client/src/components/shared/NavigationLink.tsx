@@ -1,6 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
+//Props schema
 type Props = {
   to: string;
   bg: string;
@@ -9,6 +9,7 @@ type Props = {
   onClick?: () => Promise<void>;
 };
 
+//Navbar component for header
 const NavigationLink = (props: Props) => {
   return (
     <Link

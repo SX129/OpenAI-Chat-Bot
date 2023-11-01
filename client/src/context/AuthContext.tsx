@@ -7,11 +7,13 @@ import {
 } from "react";
 import { checkAuthStatus, loginUser, logoutUser, signupUser } from "../helpers/api-communicator";
 
+//User schema
 type User = {
   name: string;
   email: string;
 };
 
+//Authentication schema
 type UserAuth = {
   isLoggedIn: boolean;
   user: User | null;
@@ -37,6 +39,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     checkStatus();
   }, []);
 
+  //Fetch login data and set user states
   const login = async (email: string, password: string) => {
     const data = await loginUser(email, password);
 
@@ -46,6 +49,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  //Send signup data and set user states
   const signup = async (name: string, email: string, password: string) => {
     const data = await signupUser(name, email, password);
 
@@ -55,6 +59,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  //Fetch user data for logout, set user states, and forces reload
   const logout = async () => {
     await logoutUser();
     setIsLoggedIn(false);

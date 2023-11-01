@@ -1,9 +1,9 @@
 import { Avatar, Box, Typography } from "@mui/material";
-import React from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { coldarkDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
+//Converts javascript snippet into readable string
 function extractCodeFromString(message: string) {
   if (message.includes("```")) {
     const blocks = message.split("```");
@@ -11,6 +11,7 @@ function extractCodeFromString(message: string) {
   }
 }
 
+//Checks if message is javascript snippet
 function isCodeBlock(str: string) {
   if (
     str.includes("=") ||
@@ -27,6 +28,7 @@ function isCodeBlock(str: string) {
   return false;
 }
 
+//Chat message component for chat box. Reads in chat content and from whom.
 const ChatItem = ({
   content,
   role,
