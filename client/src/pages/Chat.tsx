@@ -114,6 +114,7 @@ const Chat = () => {
             Ask me anything!
           </Typography>
           <Button
+            onClick={handleDeleteChats}
             sx={{
               width: "200px",
               my: "auto",
