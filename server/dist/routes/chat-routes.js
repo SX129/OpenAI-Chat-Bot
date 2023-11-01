@@ -6,5 +6,6 @@ import { generateChatCompletion } from "../controllers/chat-controllers.js";
 const chatRoutes = Router();
 //Endpoints
 chatRoutes.post("/new", validate(chatCompletionValidator), verifyToken, generateChatCompletion);
+chatRoutes.get("/all-chats", verifyToken, generateChatCompletion);
 export default chatRoutes;
 //# sourceMappingURL=chat-routes.js.map

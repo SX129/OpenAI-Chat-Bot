@@ -14,4 +14,10 @@ chatRoutes.post(
   generateChatCompletion
 );
 
+chatRoutes.get(
+  "/all-chats",
+  verifyToken,
+  generateChatCompletion
+);
+
 export default chatRoutes;
