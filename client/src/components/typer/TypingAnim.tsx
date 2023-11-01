@@ -8,7 +8,7 @@ const TypingAnim = () => {
         // Same substring at the start will only be typed once, initially
         "A Chat-GPT Clone",
         1000,
-        "Built with OpenAI - GPT 3.5 Turbo 🤖",
+        "Built with OpenAI : GPT-3.5 Turbo",
         2000,
       ]}
       speed={50}
