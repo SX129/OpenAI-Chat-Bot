@@ -2,6 +2,7 @@ import { Avatar, Box, Button, Typography } from "@mui/material";
 import React from "react";
 import { useAuth } from "../context/AuthContext";
 import { red } from "@mui/material/colors";
+import ChatItem from "../components/chat/ChatItem";
 
 const chat_messages = [
   { role: "user", content: "Hello, how are you?" },
@@ -144,8 +145,8 @@ const Chat = () => {
             scrollBehavior: "smooth",
           }}
         >
-          {chat_messages.map((chat) => (
-            <div>{chat.content}</div>
+          {chat_messages.map((chat, index) => (
+            <ChatItem content={chat.content} role={chat.role} key={index} />
           ))}
         </Box>
       </Box>
