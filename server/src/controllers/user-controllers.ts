@@ -126,6 +126,7 @@ export const userLogin = async (
   }
 };
 
+//GET request function for verification
 export const verifyUser = async (
   req: Request,
   res: Response,
@@ -151,6 +152,7 @@ export const verifyUser = async (
   }
 };
 
+//POST request function for logout
 export const userLogout = async (
   req: Request,
   res: Response,

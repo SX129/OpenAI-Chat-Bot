@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import { COOKIE_NAME } from "./constants.js";
 
+//JWT creation function
 export const createToken = (id: string, email: string, expiresIn: string) => {
   const payload = { id, email };
   const token = jwt.sign(payload, process.env.JWT_SECRET, {
@@ -10,6 +11,7 @@ export const createToken = (id: string, email: string, expiresIn: string) => {
   return token;
 };
 
+//JWT verification check for returning user
 export const verifyToken = async (
   req: Request,
   res: Response,

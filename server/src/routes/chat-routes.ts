@@ -6,7 +6,7 @@ import { deleteChats, generateChatCompletion, sendChatsToUser } from "../control
 //Router for chat endpoints. Protected API.
 const chatRoutes = Router();
 
-//Endpoints
+//Endpoints for chat
 chatRoutes.post(
   "/new",
   validate(chatCompletionValidator),

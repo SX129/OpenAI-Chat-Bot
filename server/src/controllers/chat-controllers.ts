@@ -3,6 +3,7 @@ import User from "../models/User.js";
 import { configureOpenAI } from "../config/openai-config.js";
 import { OpenAIApi, ChatCompletionRequestMessage } from "openai";
 
+//Creates chat requests and responses
 export const generateChatCompletion = async (
   req: Request,
   res: Response,
@@ -39,6 +40,7 @@ export const generateChatCompletion = async (
   }
 };
 
+//Fetches chat and sends to user
 export const sendChatsToUser = async (
   req: Request,
   res: Response,
@@ -62,6 +64,7 @@ export const sendChatsToUser = async (
   }
 };
 
+//Deletes chat
 export const deleteChats = async (
   req: Request,
   res: Response,
