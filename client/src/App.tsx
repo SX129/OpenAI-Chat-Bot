@@ -6,6 +6,7 @@ import Chat from "./pages/Chat";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import { useAuth } from "./context/AuthContext";
+import Footer from "./components/footer/Footer";
 
 function App() {
   const auth = useAuth();
@@ -22,6 +23,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </main>
   );
 }
