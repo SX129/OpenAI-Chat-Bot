@@ -8,6 +8,7 @@ An AI chat bot using OpenAI's GPT-3.5 Turbo modeled after ChatGPT.
 **Client:** Vite, React, Typescript
 
 **Server:** Node, Express, Typescript, MongoDB, OpenAI API
+
 ## Features
 
 - User authentication and authorization (JWT, HTTP-Only Cookies, BCrypt)
